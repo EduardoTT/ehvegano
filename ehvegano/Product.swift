@@ -13,14 +13,18 @@ struct Product {
     var name: String
     var type: ProductType
     
-    enum ProductType: String, CustomStringConvertible {
+    enum ProductType: Int {
+        
+        case vegan
+        case notVegan
+        case unknown
         
         var description: String {
-            return self.rawValue
+            switch self {
+            case .vegan: return "Vegan"
+            case .notVegan: return "Not Vegan"
+            case .unknown: return "unknown"
+            }
         }
-        
-        case vegan = "vegan"
-        case notVegan = "notVegan"
-        case unknown = "unknown"
     }
 }

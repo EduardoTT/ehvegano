@@ -1,0 +1,38 @@
+{
+  "Mac" : [
+
+  ],
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "commitish" : "6.23.0",
+  "iOS" : [
+    {
+      "name" : "abseil",
+      "hash" : "78d7376063cf11e794cc247f68282e361d979e70665d6b3058aaff3d71734983"
+    },
+    {
+      "name" : "leveldb-library",
+      "hash" : "721605fdb0b5a459197b6f1f7df16a6addd4224a7813357dab2f8857ccce1640"
+    },
+    {
+      "name" : "gRPC-C++",
+      "hash" : "9f62af56c0d3394c456096b65db5683da92fb1e7ef7c92995dbd3f8a986c7cbe"
+    },
+    {
+      "name" : "BoringSSL-GRPC",
+      "hash" : "685eb598fcae06b93f013011c1186f2ce6212856f45a4acf663372c4e4494c64"
+    },
+    {
+      "name" : "gRPC-Core",
+      "hash" : "f58333b521f8ee0f54d59eb11c01a5d7ff4a68756b785af386d62f030e59bf7e"
+    },
+    {
+      "name" : "FirebaseFirestore",
+      "hash" : "1c26f42ccb8ea3f4c063f3eae2f2bd379ae6f4d9e0affd813956388b7566bdc7"
+    }
+  ]
+}

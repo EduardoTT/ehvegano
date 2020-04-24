@@ -16,16 +16,25 @@ class ContentController: ObservableObject {
     @Published var errorMessage: String?
     @Published var isFetching = false
     
+    private let provider = ProductDataProvider()
+    
     func checkProduct(ean: String) {
         isFetching = true
         product = nil
         notFound = false
         errorMessage = nil
-        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { _ in
-//            self.product = Product(id: "1234567890123", name: "oreo", type: .vegan)
-//            self.notFound = true
-            self.errorMessage = "falha no sistema"
+        provider.getProduct(id: ean) { result in
             self.isFetching = false
+            switch result {
+            case .success(let product):
+                if let product = product {
+                    self.product = product
+                } else {
+                    self.notFound = true
+                }
+            case .failure:
+                self.errorMessage = "Ocorreu um erro, tente novamente"
+            }
         }
     }
 }
