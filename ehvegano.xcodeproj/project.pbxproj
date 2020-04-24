@@ -27,6 +27,7 @@
 		A016882824525F1A00875C67 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A016882724525F1A00875C67 /* GoogleService-Info.plist */; };
 		A016882924525FA200875C67 /* gRPC-C++.framework in Resources */ = {isa = PBXBuildFile; fileRef = A016880D24525E7400875C67 /* gRPC-C++.framework */; };
 		A016882B245274FC00875C67 /* ProductDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A016882A245274FC00875C67 /* ProductDataProviderTests.swift */; };
+		A016882D2452818A00875C67 /* ContentControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A016882C2452818A00875C67 /* ContentControllerTests.swift */; };
 		A02A4499244FB2B4008EABCB /* ContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02A4498244FB2B4008EABCB /* ContentController.swift */; };
 		A02A449B244FB303008EABCB /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02A449A244FB303008EABCB /* Product.swift */; };
 		A02A449D244FD873008EABCB /* ProductDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02A449C244FD873008EABCB /* ProductDataProvider.swift */; };
@@ -37,7 +38,6 @@
 		A0A0ACF3244BA76C00AFAA1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A0ACF2244BA76C00AFAA1A /* Assets.xcassets */; };
 		A0A0ACF6244BA76C00AFAA1A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A0ACF5244BA76C00AFAA1A /* Preview Assets.xcassets */; };
 		A0A0ACF9244BA76C00AFAA1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0A0ACF7244BA76C00AFAA1A /* LaunchScreen.storyboard */; };
-		A0A0AD04244BA76C00AFAA1A /* ehveganoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0AD03244BA76C00AFAA1A /* ehveganoTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +71,7 @@
 		A016881424525E7500875C67 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Carthage/Build/iOS/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		A016882724525F1A00875C67 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A016882A245274FC00875C67 /* ProductDataProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDataProviderTests.swift; sourceTree = "<group>"; };
+		A016882C2452818A00875C67 /* ContentControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentControllerTests.swift; sourceTree = "<group>"; };
 		A02A4498244FB2B4008EABCB /* ContentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentController.swift; sourceTree = "<group>"; };
 		A02A449A244FB303008EABCB /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		A02A449C244FD873008EABCB /* ProductDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDataProvider.swift; sourceTree = "<group>"; };
@@ -84,7 +85,6 @@
 		A0A0ACF8244BA76C00AFAA1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0A0ACFA244BA76C00AFAA1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0A0ACFF244BA76C00AFAA1A /* ehveganoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ehveganoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A0A0AD03244BA76C00AFAA1A /* ehveganoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ehveganoTests.swift; sourceTree = "<group>"; };
 		A0A0AD05244BA76C00AFAA1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,8 +189,8 @@
 		A0A0AD02244BA76C00AFAA1A /* ehveganoTests */ = {
 			isa = PBXGroup;
 			children = (
-				A0A0AD03244BA76C00AFAA1A /* ehveganoTests.swift */,
 				A016882A245274FC00875C67 /* ProductDataProviderTests.swift */,
+				A016882C2452818A00875C67 /* ContentControllerTests.swift */,
 				A0A0AD05244BA76C00AFAA1A /* Info.plist */,
 			);
 			path = ehveganoTests;
@@ -314,7 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A016882B245274FC00875C67 /* ProductDataProviderTests.swift in Sources */,
-				A0A0AD04244BA76C00AFAA1A /* ehveganoTests.swift in Sources */,
+				A016882D2452818A00875C67 /* ContentControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

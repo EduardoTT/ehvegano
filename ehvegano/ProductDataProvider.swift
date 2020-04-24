@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-class ProductDataProvider {
+class ProductDataProvider: ProductDataProviderProtocol {
 
     private let db: Firestore
     
@@ -60,3 +60,12 @@ class ProductDataProvider {
     }
 }
 
+protocol ProductDataProviderProtocol {
+    func getProduct(id: String, mockedData: [String:Any]?, mockedError: Error?, completion: @escaping (Result<Product?, ProductDataProvider.NetworkError>) -> Void)
+}
+
+extension ProductDataProviderProtocol {
+    func getProduct(id: String, completion: @escaping (Result<Product?, ProductDataProvider.NetworkError>) -> Void) {
+        getProduct(id: id, mockedData: nil, mockedError: nil, completion: completion)
+    }
+}

@@ -10,13 +10,17 @@ import Foundation
 
 class ContentController: ObservableObject {
     
-    //Exactly one of the variables has a value or is true. All the others are nil or false.
+    //none or one of the variables has a value or is true. All the others are nil or false.
     @Published var product: Product?
     @Published var notFound = false
     @Published var errorMessage: String?
     @Published var isFetching = false
     
-    private let provider = ProductDataProvider()
+    private let provider: ProductDataProviderProtocol
+    
+    init(provider: ProductDataProviderProtocol? = nil) {
+        self.provider = provider ?? ProductDataProvider()
+    }
     
     func checkProduct(ean: String) {
         isFetching = true
