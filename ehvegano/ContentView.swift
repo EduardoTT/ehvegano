@@ -45,10 +45,14 @@ struct ResultView: View {
             ZStack {
                 ActivityIndicator(isAnimating: isFetching)
                 if product != nil {
-                    VStack(spacing: 20) {
-                        Text(product!.type.description)
+                    VStack() {
+                        imageFor(type: product!.type)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 40, height: 40)
+                        Text(product!.type.description).font(.headline)
+                            .padding(.bottom, 20)
                         Text(product!.name)
-                            .font(.title)
                     }
                 }
                 if notFound {
@@ -62,6 +66,16 @@ struct ResultView: View {
             Spacer()
             Spacer()
         }
+    }
+    
+    func imageFor(type: Product.ProductType) -> Image {
+        var image: Image
+        switch type {
+        case .vegan: image = Image(systemName: "leaf.arrow.circlepath")
+        case .notVegan: image = Image(systemName: "xmark.octagon")
+        case .unknown: image = Image(systemName: "questionmark")
+        }
+        return image
     }
 }
     

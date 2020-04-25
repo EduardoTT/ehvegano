@@ -23,10 +23,16 @@ class ContentController: ObservableObject {
     }
     
     func checkProduct(ean: String) {
+        
+        guard ean != product?.id else {
+            return
+        }
+        
         isFetching = true
         product = nil
         notFound = false
         errorMessage = nil
+        
         provider.getProduct(id: ean) { result in
             self.isFetching = false
             switch result {

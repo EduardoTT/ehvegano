@@ -21,9 +21,9 @@ struct Product {
         
         var description: String {
             switch self {
-            case .vegan: return "Vegan"
-            case .notVegan: return "Not Vegan"
-            case .unknown: return "unknown"
+            case .vegan: return "Vegano"
+            case .notVegan: return "Não Vegano"
+            case .unknown: return "Há dúvidas"
             }
         }
     }
