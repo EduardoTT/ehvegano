@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @ObservedObject var controller = ContentController()
+    @ObservedObject private var controller = ContentController()
     @State private var ean: String = ""
     
     var body: some View {
@@ -60,13 +60,14 @@ struct ResultView: View {
             }
             Spacer()
             Spacer()
+            Spacer()
         }
     }
 }
     
 
 struct EanTextField: View {
-    
+    @ObservedObject private var keyboardResponder = KeyboardResponder()
     var controller: ContentController
     @Binding var ean: String
     
@@ -74,10 +75,21 @@ struct EanTextField: View {
         VStack {
             Spacer()
             Spacer()
-            TextField("EAN...", text: $ean, onCommit: {
-                guard self.ean != "" else { return }
-                self.controller.checkProduct(ean: self.ean)
-            } ).textFieldStyle(RoundedBorderTextFieldStyle())
+            HStack {
+                TextField("EAN...", text: self.$ean)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .keyboardType(.numberPad)
+                Button(action: {
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    guard self.ean != "" else { return }
+                    self.controller.checkProduct(ean: self.ean)
+                }) {
+                    Image(systemName: "magnifyingglass")
+                    Text("Buscar")
+                }
+            }
+            .padding(.bottom, keyboardResponder.currentHeight/2)
+            .animation(.easeOut(duration: 0.16))
             Spacer()
         }.padding()
     }

@@ -38,6 +38,7 @@
 		A0A0ACF3244BA76C00AFAA1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A0ACF2244BA76C00AFAA1A /* Assets.xcassets */; };
 		A0A0ACF6244BA76C00AFAA1A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A0ACF5244BA76C00AFAA1A /* Preview Assets.xcassets */; };
 		A0A0ACF9244BA76C00AFAA1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0A0ACF7244BA76C00AFAA1A /* LaunchScreen.storyboard */; };
+		A0CE3FC52453BB4C00663871 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CE3FC42453BB4C00663871 /* KeyboardResponder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		A0A0ACFA244BA76C00AFAA1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0A0ACFF244BA76C00AFAA1A /* ehveganoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ehveganoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A0AD05244BA76C00AFAA1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0CE3FC42453BB4C00663871 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				A0A0ACEC244BA76800AFAA1A /* AppDelegate.swift */,
 				A0A0ACEE244BA76800AFAA1A /* SceneDelegate.swift */,
 				A0A0ACF0244BA76800AFAA1A /* ContentView.swift */,
+				A0CE3FC42453BB4C00663871 /* KeyboardResponder.swift */,
 				A02A4498244FB2B4008EABCB /* ContentController.swift */,
 				A02A449A244FB303008EABCB /* Product.swift */,
 				A036058A244D309E002DE4E5 /* ActivityIndicator.swift */,
@@ -304,6 +307,7 @@
 				A0A0ACEF244BA76800AFAA1A /* SceneDelegate.swift in Sources */,
 				A02A4499244FB2B4008EABCB /* ContentController.swift in Sources */,
 				A02A449D244FD873008EABCB /* ProductDataProvider.swift in Sources */,
+				A0CE3FC52453BB4C00663871 /* KeyboardResponder.swift in Sources */,
 				A0A0ACF1244BA76800AFAA1A /* ContentView.swift in Sources */,
 				A02A449B244FB303008EABCB /* Product.swift in Sources */,
 			);
