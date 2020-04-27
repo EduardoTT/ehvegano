@@ -50,8 +50,10 @@ struct ResultView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 40, height: 40)
+                            .foregroundColor(colorFor(type: product!.type))
                         Text(product!.type.description).font(.headline)
                             .padding(.bottom, 20)
+                            .foregroundColor(colorFor(type: product!.type))
                         Text(product!.name)
                     }
                 }
@@ -69,13 +71,22 @@ struct ResultView: View {
     }
     
     func imageFor(type: Product.ProductType) -> Image {
-        var image: Image
         switch type {
-        case .vegan: image = Image(systemName: "leaf.arrow.circlepath")
-        case .notVegan: image = Image(systemName: "xmark.octagon")
-        case .unknown: image = Image(systemName: "questionmark")
+        case .vegan:
+            return Image(systemName: "leaf.arrow.circlepath")
+        case .notVegan:
+            return Image(systemName: "xmark.octagon")
+        case .unknown:
+            return Image(systemName: "questionmark")
         }
-        return image
+    }
+    
+    func colorFor(type: Product.ProductType) -> Color {
+        switch type {
+        case .vegan: return Color.green
+        case .notVegan: return Color.red
+        case .unknown: return Color.yellow
+        }
     }
 }
     
@@ -108,3 +119,4 @@ struct EanTextField: View {
         }.padding()
     }
 }
+    
