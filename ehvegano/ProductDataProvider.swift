@@ -17,24 +17,25 @@ class ProductDataProvider: ProductDataProviderProtocol {
         db = Firestore.firestore()
     }
     
-    func getProduct(id: String, mockedData: [String:Any]? = nil, mockedError: Error? = nil, completion: @escaping (Result<Product?, NetworkError>) -> Void) {
+    func getProduct(id: String, mockedData: [String: Any]? = nil, mockedError: Error? = nil, completion: @escaping (Result<Product?, NetworkError>) -> Void) {
         
         if mockedData != nil || mockedError != nil {
             parseGetProduct(id: id, completion: completion, data: mockedData, error: mockedError)
             return
         }
         
-         db.collection("products").document(id).getDocument() { querySnapshot, error in
+        db.collection("products").document(id).getDocument { querySnapshot, error in
             self.parseGetProduct(
                 id: id,
                 completion: completion,
                 data: querySnapshot?.data(),
-                error:error
+                error: error
             )
+            
         }
     }
     
-    private func parseGetProduct(id: String, completion: @escaping (Result<Product?, NetworkError>) -> Void, data: [String:Any]?, error:Error?) {
+    private func parseGetProduct(id: String, completion: @escaping (Result<Product?, NetworkError>) -> Void, data: [String: Any]?, error: Error?) {
         if let error = error {
             completion(.failure(.providerError(message: ("\(error)"))))
         } else {
@@ -61,7 +62,7 @@ class ProductDataProvider: ProductDataProviderProtocol {
 }
 
 protocol ProductDataProviderProtocol {
-    func getProduct(id: String, mockedData: [String:Any]?, mockedError: Error?, completion: @escaping (Result<Product?, ProductDataProvider.NetworkError>) -> Void)
+    func getProduct(id: String, mockedData: [String: Any]?, mockedError: Error?, completion: @escaping (Result<Product?, ProductDataProvider.NetworkError>) -> Void)
 }
 
 extension ProductDataProviderProtocol {

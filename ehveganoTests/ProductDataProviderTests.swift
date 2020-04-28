@@ -9,39 +9,34 @@
 import XCTest
 @testable import ehvegano
 
-private final class ProductDataProviderTests: XCTestCase {
+final class ProductDataProviderTests: XCTestCase {
 
     private let provider = ProductDataProvider()
     private let id = "1234"
     let error = TestError.error
-    
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
 
     func testGetProductNetworkError() {
-        let someData = ["key":"value"]
+        let someData = ["key": "value"]
         //The function should ignore the mockedData and return .failure
         provider.getProduct(id: id, mockedData: someData, mockedError: error) { result in
             switch result {
-            case .success: XCTFail()
-            case .failure: break
+            case .success:
+                XCTFail("The result should be an error")
+            case .failure:
+                break
             }
         }
     }
     
     func testGetProductParseError() {
-        let missingTypeData = ["name":"produto"]
+        let missingTypeData = ["name": "produto"]
         //should return success, but product not found
         provider.getProduct(id: id, mockedData: missingTypeData, mockedError: nil) { result in
             switch result {
             case .success(let product):
                 XCTAssertNil(product)
-            case .failure: XCTFail()
+            case .failure:
+                XCTFail("the result should be success and return a product")
             }
         }
     }
@@ -53,18 +48,20 @@ private final class ProductDataProviderTests: XCTestCase {
             switch result {
             case .success(let product):
                 XCTAssertNil(product)
-            case .failure: XCTFail()
+            case .failure:
+                XCTFail("the result should be success and return a product")
             }
         }
     }
     
     func testGetProductSuccess() {
-        let data: [String:Any] = ["name":"my product", "type":0]
+        let data: [String: Any] = ["name": "my product", "type": 0]
         provider.getProduct(id: id, mockedData: data, mockedError: nil) { result in
             switch result {
             case .success(let product):
                 XCTAssertNotNil(product)
-            case .failure: XCTFail()
+            case .failure:
+                XCTFail("the result should be success and return a product")
             }
         }
     }

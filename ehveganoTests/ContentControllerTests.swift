@@ -9,15 +9,7 @@
 import XCTest
 @testable import ehvegano
 
-private final class ContentControllerTests: XCTestCase {
-
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+final class ContentControllerTests: XCTestCase {
 
     func testInitialState() {
         let dataProviderMock = ProductDataProviderMock(result: .success(nil))
@@ -83,13 +75,13 @@ class ProductDataProviderMock: ProductDataProviderProtocol {
         self.result = result
     }
     
-    func getProduct(id: String, mockedData: [String : Any]? = nil, mockedError: Error? = nil, completion: @escaping (Result<Product?, ProductDataProvider.NetworkError>) -> Void) {
+    func getProduct(id: String, mockedData: [String: Any]? = nil, mockedError: Error? = nil, completion: @escaping (Result<Product?, ProductDataProvider.NetworkError>) -> Void) {
         completion(result)
     }
 }
 
 class ProductDataProviderMockWithDelay: ProductDataProviderProtocol {
-    func getProduct(id: String, mockedData: [String : Any]?, mockedError: Error?, completion: @escaping (Result<Product?, ProductDataProvider.NetworkError>) -> Void) {
+    func getProduct(id: String, mockedData: [String: Any]?, mockedError: Error?, completion: @escaping (Result<Product?, ProductDataProvider.NetworkError>) -> Void) {
         Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
             completion(.success(nil))
         }

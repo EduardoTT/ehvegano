@@ -45,7 +45,7 @@ struct ResultView: View {
             ZStack {
                 ActivityIndicator(isAnimating: isFetching)
                 if product != nil {
-                    VStack() {
+                    VStack {
                         imageFor(type: product!.type)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -83,9 +83,12 @@ struct ResultView: View {
     
     func colorFor(type: Product.ProductType) -> Color {
         switch type {
-        case .vegan: return Color.green
-        case .notVegan: return Color.red
-        case .unknown: return Color.yellow
+        case .vegan:
+            return Color.green
+        case .notVegan:
+            return Color.red
+        case .unknown:
+            return Color.yellow
         }
     }
 }
@@ -108,10 +111,10 @@ struct EanTextField: View {
                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                     guard self.ean != "" else { return }
                     self.controller.checkProduct(ean: self.ean)
-                }) {
+                }, label: {
                     Image(systemName: "magnifyingglass")
                     Text("Buscar")
-                }
+                })
             }
             .padding(.bottom, keyboardResponder.currentHeight/2)
             .animation(.easeOut(duration: 0.16))
