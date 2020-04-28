@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 struct ActivityIndicator: UIViewRepresentable {
-    
+
     var isAnimating: Bool
     
     func makeUIView(context: UIViewRepresentableContext<Self>) -> UIActivityIndicatorView {
@@ -20,5 +20,5 @@ struct ActivityIndicator: UIViewRepresentable {
     func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicator>) {
         isAnimating ? uiView.startAnimating() : uiView.stopAnimating()
     }
-    
+
 }

@@ -9,7 +9,7 @@
 import XCTest
 @testable import ehvegano
 
-class ProductDataProviderTests: XCTestCase {
+private final class ProductDataProviderTests: XCTestCase {
 
     private let provider = ProductDataProvider()
     private let id = "1234"
