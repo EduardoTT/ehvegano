@@ -14,14 +14,16 @@ struct ContentView: View {
     @State private var ean: String = ""
     
     var body: some View {
-        ZStack {
-            ResultView(
-                product: $controller.product,
-                notFound: $controller.notFound,
-                errorMessage: $controller.errorMessage,
-                isFetching: $controller.isFetching
-            )
-            EanTextField(controller: controller, ean: $ean)
+        NavigationView {
+            ZStack {
+                ResultView(
+                    product: $controller.product,
+                    notFound: $controller.notFound,
+                    errorMessage: $controller.errorMessage,
+                    isFetching: $controller.isFetching
+                )
+                EanTextField(controller: controller, ean: $ean)
+            }
         }
     }
 }
@@ -41,7 +43,6 @@ struct ResultView: View {
     
     var body: some View {
         VStack {
-            Spacer()
             ZStack {
                 ActivityIndicator(isAnimating: isFetching)
                 if product != nil {
@@ -96,6 +97,8 @@ struct ResultView: View {
 
 struct EanTextField: View {
     @ObservedObject private var keyboardResponder = KeyboardResponder()
+//    @ObservedObject private var scanner = ScannerViewController()
+    @State var isActive = false
     var controller: ContentController
     @Binding var ean: String
     
@@ -103,20 +106,28 @@ struct EanTextField: View {
         VStack {
             Spacer()
             Spacer()
+            NavigationLink(destination: ScannerViewControllerRepresentable(isActive: $isActive, code: $ean), isActive: $isActive) {
+                Image(systemName: "barcode.viewfinder")
+                    .font(.title)
+                Text("Escanear")
+                    .font(.title)
+            }
+            Spacer()
             HStack {
-                TextField("EAN...", text: self.$ean)
+                TextField("EAN...", text: $ean)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad)
                 Button(action: {
                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                     guard self.ean != "" else { return }
                     self.controller.checkProduct(ean: self.ean)
+
                 }, label: {
                     Image(systemName: "magnifyingglass")
                     Text("Buscar")
                 })
             }
-            .padding(.bottom, keyboardResponder.currentHeight/2)
+            .padding(.bottom, keyboardResponder.currentHeight*0.7)
             .animation(.easeOut(duration: 0.16))
             Spacer()
         }.padding()

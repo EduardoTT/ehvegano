@@ -32,6 +32,7 @@
 		A02A449B244FB303008EABCB /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02A449A244FB303008EABCB /* Product.swift */; };
 		A02A449D244FD873008EABCB /* ProductDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02A449C244FD873008EABCB /* ProductDataProvider.swift */; };
 		A036058B244D309E002DE4E5 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A036058A244D309E002DE4E5 /* ActivityIndicator.swift */; };
+		A07E77BC24591341007D07FD /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07E77BB24591341007D07FD /* ScannerViewController.swift */; };
 		A0A0ACED244BA76800AFAA1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0ACEC244BA76800AFAA1A /* AppDelegate.swift */; };
 		A0A0ACEF244BA76800AFAA1A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0ACEE244BA76800AFAA1A /* SceneDelegate.swift */; };
 		A0A0ACF1244BA76800AFAA1A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A0ACF0244BA76800AFAA1A /* ContentView.swift */; };
@@ -77,6 +78,7 @@
 		A02A449A244FB303008EABCB /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		A02A449C244FD873008EABCB /* ProductDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDataProvider.swift; sourceTree = "<group>"; };
 		A036058A244D309E002DE4E5 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		A07E77BB24591341007D07FD /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		A0A0ACE9244BA76800AFAA1A /* ehvegano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ehvegano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A0ACEC244BA76800AFAA1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0A0ACEE244BA76800AFAA1A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				A0A0ACEC244BA76800AFAA1A /* AppDelegate.swift */,
 				A0A0ACEE244BA76800AFAA1A /* SceneDelegate.swift */,
 				A0A0ACF0244BA76800AFAA1A /* ContentView.swift */,
+				A07E77BB24591341007D07FD /* ScannerViewController.swift */,
 				A0CE3FC42453BB4C00663871 /* KeyboardResponder.swift */,
 				A02A4498244FB2B4008EABCB /* ContentController.swift */,
 				A02A449A244FB303008EABCB /* Product.swift */,
@@ -327,6 +330,7 @@
 				A036058B244D309E002DE4E5 /* ActivityIndicator.swift in Sources */,
 				A0A0ACEF244BA76800AFAA1A /* SceneDelegate.swift in Sources */,
 				A02A4499244FB2B4008EABCB /* ContentController.swift in Sources */,
+				A07E77BC24591341007D07FD /* ScannerViewController.swift in Sources */,
 				A02A449D244FD873008EABCB /* ProductDataProvider.swift in Sources */,
 				A0CE3FC52453BB4C00663871 /* KeyboardResponder.swift in Sources */,
 				A0A0ACF1244BA76800AFAA1A /* ContentView.swift in Sources */,
