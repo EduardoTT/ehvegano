@@ -70,7 +70,7 @@ struct ResultView: View {
         }
     }
     
-    func imageFor(type: Product.ProductType) -> Image {
+    private func imageFor(type: Product.ProductType) -> Image {
         switch type {
         case .vegan:
             return Image(systemName: "leaf.arrow.circlepath")
@@ -81,7 +81,7 @@ struct ResultView: View {
         }
     }
     
-    func colorFor(type: Product.ProductType) -> Color {
+    private func colorFor(type: Product.ProductType) -> Color {
         switch type {
         case .vegan:
             return Color.green
