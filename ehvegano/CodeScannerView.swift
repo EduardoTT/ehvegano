@@ -49,7 +49,8 @@ public struct CodeScannerView: UIViewControllerRepresentable {
     }
 
     #if targetEnvironment(simulator)
-    public class ScannerViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+    public class ScannerViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+        // swiftlint:disable:next weak_delegate
         var delegate: ScannerCoordinator?
         override public func loadView() {
             view = UIView()
@@ -93,16 +94,16 @@ public struct CodeScannerView: UIViewControllerRepresentable {
             delegate?.found(code: simulatedData)
         }
 
-        @objc func openGallery(_ sender: UIButton){
+        @objc func openGallery(_ sender: UIButton) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             self.present(imagePicker, animated: true, completion: nil)
         }
 
-        public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+        public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
             if let qrcodeImg = info[.originalImage] as? UIImage {
-                let detector:CIDetector=CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy:CIDetectorAccuracyHigh])!
-                let ciImage:CIImage=CIImage(image:qrcodeImg)!
+                let detector: CIDetector=CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])!
+                let ciImage: CIImage=CIImage(image: qrcodeImg)!
                 var qrCodeLink=""
 
                 let features=detector.features(in: ciImage)
@@ -112,11 +113,11 @@ public struct CodeScannerView: UIViewControllerRepresentable {
 
                 if qrCodeLink=="" {
                     delegate?.didFail(reason: .badOutput)
-                }else{
+                } else {
                     delegate?.found(code: qrCodeLink)
                 }
             }
-            else{
+            else {
                 print("Something went wrong")
             }
             self.dismiss(animated: true, completion: nil)
@@ -126,6 +127,7 @@ public struct CodeScannerView: UIViewControllerRepresentable {
     public class ScannerViewController: UIViewController {
         var captureSession: AVCaptureSession!
         var previewLayer: AVCaptureVideoPreviewLayer!
+        // swiftlint:disable:next weak_delegate
         var delegate: ScannerCoordinator?
 
         override public func viewDidLoad() {
@@ -149,7 +151,7 @@ public struct CodeScannerView: UIViewControllerRepresentable {
                 return
             }
 
-            if (captureSession.canAddInput(videoInput)) {
+            if captureSession.canAddInput(videoInput) {
                 captureSession.addInput(videoInput)
             } else {
                 delegate?.didFail(reason: .badInput)
@@ -158,7 +160,7 @@ public struct CodeScannerView: UIViewControllerRepresentable {
 
             let metadataOutput = AVCaptureMetadataOutput()
 
-            if (captureSession.canAddOutput(metadataOutput)) {
+            if captureSession.canAddOutput(metadataOutput) {
                 captureSession.addOutput(metadataOutput)
 
                 metadataOutput.setMetadataObjectsDelegate(delegate, queue: DispatchQueue.main)
@@ -194,7 +196,7 @@ public struct CodeScannerView: UIViewControllerRepresentable {
         override public func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
 
-            if (captureSession?.isRunning == false) {
+            if captureSession?.isRunning == false {
                 captureSession.startRunning()
             }
         }
@@ -202,13 +204,15 @@ public struct CodeScannerView: UIViewControllerRepresentable {
         override public func viewWillDisappear(_ animated: Bool) {
             super.viewWillDisappear(animated)
 
-            if (captureSession?.isRunning == true) {
+            if captureSession?.isRunning == true {
                 captureSession.stopRunning()
             }
-
-            NotificationCenter.default.removeObserver(self)
         }
 
+        deinit {
+            NotificationCenter.default.removeObserver(self)
+        }
+        
         override public var prefersStatusBarHidden: Bool {
             return true
         }
@@ -246,7 +250,7 @@ public struct CodeScannerView: UIViewControllerRepresentable {
 
 struct CodeScannerView_Previews: PreviewProvider {
     static var previews: some View {
-        CodeScannerView(codeTypes: [.qr]) { result in
+        CodeScannerView(codeTypes: [.qr]) { _ in
             // do nothing
         }
     }
