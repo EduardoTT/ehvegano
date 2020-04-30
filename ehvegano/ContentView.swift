@@ -5,7 +5,7 @@
 //  Created by Eduardo Tolmasquim on 18/04/20.
 //  Copyright © 2020 Eduardo. All rights reserved.
 //
-
+// swiftlint:disable
 import SwiftUI
 
 struct ContentView: View {
@@ -66,8 +66,6 @@ struct ResultView: View {
                 }
             }
             Spacer()
-            Spacer()
-            Spacer()
         }
     }
     
@@ -98,7 +96,7 @@ struct ResultView: View {
 struct EanTextField: View {
     @ObservedObject private var keyboardResponder = KeyboardResponder()
 //    @ObservedObject private var scanner = ScannerViewController()
-    @State var isActive = false
+    @State private var isActive = false
     var controller: ContentController
     @Binding var ean: String
     
@@ -106,7 +104,17 @@ struct EanTextField: View {
         VStack {
             Spacer()
             Spacer()
-            NavigationLink(destination: ScannerViewControllerRepresentable(isActive: $isActive, code: $ean), isActive: $isActive) {
+            NavigationLink(destination: CodeScannerView(codeTypes: [.ean8, .ean13, .pdf417], completion: { result in
+                self.isActive = false
+                switch result {
+                case .success(let code):
+                    self.isActive = false
+                    self.ean = code
+                    self.controller.checkProduct(ean: self.ean)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }), isActive: $isActive) {
                 Image(systemName: "barcode.viewfinder")
                     .font(.title)
                 Text("Escanear")

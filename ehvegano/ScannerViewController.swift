@@ -14,16 +14,14 @@ final class ScannerViewController: UIViewController, AVCaptureMetadataOutputObje
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
 
-    var code: Binding<String>
-    
+    @Published var code: String = ""
     var isActive: Binding<Bool>
     
-    init(isActive: Binding<Bool>, code: Binding<String>) {
+    init(isActive: Binding<Bool>) {
         self.isActive = isActive
-        self.code = code
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -107,7 +105,7 @@ final class ScannerViewController: UIViewController, AVCaptureMetadataOutputObje
     }
 
     func found(code: String) {
-        self.code = .constant(code)
+        self.code = code
         isActive = .constant(false)
     }
 
@@ -122,16 +120,16 @@ final class ScannerViewController: UIViewController, AVCaptureMetadataOutputObje
 
 struct ScannerViewControllerRepresentable: UIViewControllerRepresentable {
     
-    typealias UIViewControllerType = ScannerViewController
-    
     @Binding var isActive: Bool
     @Binding var code: String
     
+    typealias UIViewControllerType = ScannerViewController
+    
     func makeUIViewController(context: Context) -> ScannerViewController {
-        return ScannerViewController(isActive: $isActive, code: $code)
+        return ScannerViewController(isActive: $isActive)
     }
     
     func updateUIViewController(_ uiViewController: ScannerViewController, context: Context) {
-        //do nothing
+        uiViewController.isActive = $isActive
     }
 }
